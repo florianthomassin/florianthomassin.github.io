@@ -134,7 +134,8 @@ h1 {
 
 .primary-button,
 .secondary-button,
-.nav-cta {
+.nav-cta,
+.cta-button {
   text-decoration: none;
   transition: 0.3s ease;
 }
@@ -148,7 +149,20 @@ h1 {
   font-weight: 600;
 }
 
+.cta-button {
+  background: var(--gold);
+  color: #111;
+  padding: 16px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.cta-actions {
+  margin-top: 40px;
+}
+
 .primary-button:hover,
+.cta-button:hover,
 .nav-cta:hover {
   transform: translateY(-2px);
   background-color: #d3b470;
