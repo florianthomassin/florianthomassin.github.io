@@ -440,10 +440,10 @@ footer {
     gap: 20px;
   }
 
-.case-logo img{
-  width: 18%;
-  height: auto;
-}
+  .logo img{
+    width: 18%;
+    height: auto;
+  }
 
   .transition-arrow {
     transform: rotate(90deg);
