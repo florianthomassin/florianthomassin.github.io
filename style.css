@@ -19,7 +19,7 @@ html {   scroll-behavior: smooth;}
 body {
   font-family: 'Inter', sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(117,31,10,0.35), transparent 30%),
+    radial-gradient(circle at top left, rgba(193, 51, 16, 0.597), transparent 30%),
     var(--background-dark);
 
   color: var(--text-main);
@@ -100,6 +100,7 @@ section {  padding: 80px 8%;}
   max-width: 850px;
   margin-top: auto;
   margin-bottom: auto;
+  font-family: "IBM Plex Serif", serif;
 }
 
 .eyebrow,
@@ -112,10 +113,15 @@ section {  padding: 80px 8%;}
 
 h1 {
   font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
   line-height: 1;
-  font-weight: 600;
   max-width: 900px;
   margin-bottom: 30px;
+}
+
+h2 {
+  font-family: "Montserrat", serif;
 }
 
 .hero-text {
@@ -404,7 +410,9 @@ footer {
 @media (max-width: 1000px) {
 
   .problem-grid,
-  .method-grid {
+  .method-grid,
+  .services-grid,
+  .case-study-grid {
     grid-template-columns: 1fr;
   }
 
