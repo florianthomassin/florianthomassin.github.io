@@ -100,7 +100,6 @@ section {  padding: 80px 8%;}
   max-width: 850px;
   margin-top: auto;
   margin-bottom: auto;
-  font-family: "IBM Plex Serif", serif;
 }
 
 .eyebrow,
@@ -118,6 +117,7 @@ h1 {
   line-height: 1;
   max-width: 900px;
   margin-bottom: 30px;
+  font-family: "IBM Plex Serif", serif;
 }
 
 h2 {
@@ -175,7 +175,7 @@ h2 {
 }
 
 .secondary-button {
-  border: 1px solid var(--border-color);
+  border: 3px solid var(--border-color);
   color: var(--text-main);
   padding: 16px 28px;
   border-radius: 999px;
@@ -198,11 +198,19 @@ h2 {
   font-weight: 600;
 }
 
-.problem-grid,
-.method-grid {
+.problem-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);  
   gap: 25px;
+}
+
+.card-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  z-index: 2;
 }
 
 .services-grid {
@@ -211,20 +219,123 @@ h2 {
   gap: 25px;
 }
 
-
-.problem-card,
-.service-card,
-.method-item {
-  background: var(--card-bg);
+.service-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
   border: 1px solid var(--border-color);
+  background: var(--card-bg);
+}
+
+.service-header {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+}
+
+.service-icon img {
+  width: 70px;
+  height: auto;
+  display: block;
+}
+
+.service-visual {
+  height: 320px;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.service-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.2) 70%,
+    #2a2b2d 100%
+  );
+}
+
+.service-card:hover .service-visual img {
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
+}
+
+.problem-card {
+  position: relative;
+  background:
+  radial-gradient(circle at bottom right, rgba(118, 13, 105, 0.597), transparent 60%),
+  var(--card-bg);
   padding: 35px;
   border-radius: 24px;
   backdrop-filter: blur(8px);
 }
 
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 450px;
+  margin: -40px auto 60px auto;
+  align-items: center;
+}
+
+.feature-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 12px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.feature-item:not(:last-child) {
+  border-right: 1px solid #d3b470;
+}
+
+.feature-item img,
+.problem-card img {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 8px;
+}
+
+.service-content {
+  padding: 24px;
+}
+
+.service-content ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.feature-item span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
 .benefits {
   padding: 35px;
 }
+
 
 .problem-card h3,
 .benefits h3,,
@@ -257,18 +368,10 @@ h2 {
   color:#a88f5a;
 }
 
-.case-card-after h2 {
+.case-card h2 {
   padding: 20px 35px;
-  color: #d3b470;
-}
-
-.case-card-before h2 {
-  padding: 20px 35px;
-}
-
-.case-card-after,
-.case-card-before {
-  text-align: center;
+  text-transform: uppercase;
+  text-align: center
 }
 
 .transition-section {
@@ -277,30 +380,36 @@ h2 {
 }
 
 .case-study-grid {
-  border: 1px solid var(--border-color);
+  gap: 20px;
   border-radius: 30px;
-  padding: 50px;
+  padding: 30px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 40px;
-  background: rgba(255,255,255,0.03);
+  background: linear-gradient(
+    to right,
+    rgba(118, 13, 106, 0.185) 0%,
+    #d3b4704e 100%
+  );
 }
 
-.case-card-before,
-.case-card-after {
-  flex: 1;
+.case-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   min-width: 0;
+  gap: 8px;
 }
 
-.case-card-before img,
-.case-card-after img {
-  width: 60%;
+.case-card img {
+  display: block;
   max-width: 250px;
   height: auto;
 }
 
-.case-logo img{
+.logo img{
   width: 12%;
   height: auto;
 }
@@ -324,10 +433,9 @@ h2 {
 }
 
 .service-number {
-  color: var(--gold);
-  margin-bottom: 20px;
   font-size: 0.9rem;
   letter-spacing: 0.15em;
+  color: var(--gold);
 }
 
 .method-item span {
@@ -363,8 +471,8 @@ h2 {
   background:
     linear-gradient(
       135deg,
-      rgba(168,143,90,0.15),
-      rgba(117,31,10,0.2)
+      rgba(168, 143, 90, 0.236),
+      rgba(122, 31, 9, 0.349)
     );
 }
 
@@ -428,17 +536,16 @@ footer {
 @media (max-width: 1000px) {
 
   .problem-grid,
+  .hero-grid,
   .method-grid,
-  .services-grid,
   .case-study-grid {
     grid-template-columns: 1fr;
   }
 
-  .case-study-grid {
-    flex-direction: column;
-    padding: 20px;
-    gap: 20px;
-  }
+.services-grid {
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
 
   .logo img{
     width: 25%;
@@ -459,6 +566,11 @@ footer {
 
   section {
     padding: 90px 7%;
+  }
+
+  .case-study-grid {
+  flex-direction: column;
+  padding: 20px;
   }
 
   .navbar {
