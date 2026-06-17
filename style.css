@@ -569,8 +569,13 @@ footer {
   }
 
   .case-study-grid {
-  flex-direction: column;
-  padding: 20px;
+    flex-direction: column;
+    padding: 20px;
+    background: linear-gradient(
+      to bottom,
+      rgba(118, 13, 106, 0.185) 0%,
+      #d3b4704e 100%
+      )
   }
 
   .navbar {
